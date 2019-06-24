@@ -74,7 +74,7 @@ public class ResultCheck {
                 if(cardsOnTheTable.get(i).contains("D") && startOfTheSign == -1)
                     startOfTheSign = i;
                 if(!cardsOnTheTable.get(i).contains("D") && startOfTheSign != -1){
-                    endOfTheSign = i;
+                    endOfTheSign = i-1;
                     break;
                 }
             }
@@ -89,7 +89,7 @@ public class ResultCheck {
                 if(cardsOnTheTable.get(i).contains("S") && startOfTheSign == -1)
                     startOfTheSign = i;
                 if(!cardsOnTheTable.get(i).contains("S") && startOfTheSign != -1){
-                    endOfTheSign = i;
+                    endOfTheSign = i-1;
                     break;
                 }
             }
@@ -104,7 +104,7 @@ public class ResultCheck {
                 if(cardsOnTheTable.get(i).contains("H") && startOfTheSign == -1)
                     startOfTheSign = i;
                 if(!cardsOnTheTable.get(i).contains("H") && startOfTheSign != -1){
-                    endOfTheSign = i;
+                    endOfTheSign = i-1;
                     break;
                 }
             }
@@ -119,7 +119,7 @@ public class ResultCheck {
                 if(cardsOnTheTable.get(i).contains("C") && startOfTheSign == -1)
                     startOfTheSign = i;
                 if(!cardsOnTheTable.get(i).contains("C") && startOfTheSign != -1){
-                    endOfTheSign = i;
+                    endOfTheSign = i-1;
                     break;
                 }
             }
@@ -161,21 +161,24 @@ public class ResultCheck {
             if(card.contains("9")){
                 amountS[7]++;
             }
-            if(card.contains("A")){
+            if(card.contains("10")){
                 amountS[8]++;
             }
-            if(card.contains("B")){
+            if(card.contains("J")){
                 amountS[9]++;
             }
-            if(card.contains("C")){
+            if(card.contains("Q")){
                 amountS[10]++;
             }
-            if(card.contains("D")){
+            if(card.contains("K")){
                 amountS[11]++;
             }
-            if(card.contains("E")){
+            if(card.contains("A")){
                 amountS[12]++;
             }
+        }
+        for(int i = 0;i<13;i++ ){
+            System.out.println("XXXXX" + amountS[i]);
         }
         Arrays.sort(amountS);
         if(amountS[12]>=4)
@@ -189,7 +192,7 @@ public class ResultCheck {
         boolean pair = false;
         for(int i = 12; i > 0; i--)
         {
-            if(amountS[i] == 3)
+            if(amountS[i] == 3 && threeOnes == false)
                 threeOnes = true;
             if(amountS[i] == 2 && threeOnes)
             {
@@ -197,10 +200,15 @@ public class ResultCheck {
                 break;
             }
         }
-        if(pair)
-            return true;
-        else
-            return false;
+        if(pair){
+            threeOnes = false;
+            pair = false;
+            return true;}
+        else{
+            threeOnes = false;
+            pair = false;
+            return false;}
+
     }
     public boolean Flush() {
         if(diamonds < 5 && spades < 5 && hearts < 5 && clubs < 5)
