@@ -98,6 +98,12 @@ public class Game {
             System.out.println("YOU HAVE A ROYAL FLUSH");
             return;
         }
+        if(checker.FourOfAKind(totalSet))
+        {
+            player.setScore(25);
+            System.out.println("YOU HAVE A FOUR OF A KIND");
+            return;
+        }
         changePower();
         if(checker.StraightFlush(totalSet))
         {
@@ -105,12 +111,7 @@ public class Game {
             System.out.println("YOU HAVE A STRAIGHT FLUSH");
             return;
         }
-        if(checker.FourOfAKind(totalSet))
-        {
-            player.setScore(25);
-            System.out.println("YOU HAVE A FOUR OF A KIND");
-            return;
-        }
+
         if(checker.FullHouse())
         {
             player.setScore(9);
@@ -179,3 +180,4 @@ private void printingCards()
             "4." + tableCards.get(3) + " " + "5." + tableCards.get(4));
 }
 }
+
