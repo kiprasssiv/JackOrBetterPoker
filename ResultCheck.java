@@ -48,7 +48,7 @@ public class ResultCheck {
         spades = 0;
         hearts = 0;
         clubs = 0;
-        System.out.println(cardsOnTheTable);
+        System.out.println(cardsOnTheTable); //counting cards for royal flush
         for(int i = 0; i < cardsOnTheTable.size(); i++){
             card = cardsOnTheTable.get(i);
             if(card.contains("D")){
@@ -79,7 +79,7 @@ public class ResultCheck {
                 }
             }
             String begin = cardsOnTheTable.get(startOfTheSign).replaceAll("D","");
-            String end = cardsOnTheTable.get(endOfTheSign).replaceAll("D","");
+            String end = cardsOnTheTable.get(startOfTheSign + 4).replaceAll("D","");
             if(Integer.valueOf(end) - Integer.valueOf(begin) == 4)
                 isStraightFlush = true;
         }
@@ -94,7 +94,7 @@ public class ResultCheck {
                 }
             }
             String begin = cardsOnTheTable.get(startOfTheSign).replaceAll("S","");
-            String end = cardsOnTheTable.get(endOfTheSign).replaceAll("S","");
+            String end = cardsOnTheTable.get(startOfTheSign + 4).replaceAll("S","");
             if(Integer.valueOf(end) - Integer.valueOf(begin) == 4)
                 isStraightFlush = true;
         }
@@ -109,7 +109,7 @@ public class ResultCheck {
                 }
             }
             String begin = cardsOnTheTable.get(startOfTheSign).replaceAll("H","");
-            String end = cardsOnTheTable.get(endOfTheSign).replaceAll("H","");
+            String end = cardsOnTheTable.get(endOfTheSign + 4).replaceAll("H","");
             if(Integer.valueOf(end) - Integer.valueOf(begin) == 4)
                 isStraightFlush = true;
         }
@@ -124,7 +124,7 @@ public class ResultCheck {
                 }
             }
             String begin = cardsOnTheTable.get(startOfTheSign).replaceAll("C","");
-            String end = cardsOnTheTable.get(endOfTheSign).replaceAll("C","");
+            String end = cardsOnTheTable.get(endOfTheSign + 4).replaceAll("C","");
             if(Integer.valueOf(end) - Integer.valueOf(begin) == 4)
                 isStraightFlush = true;
         }
@@ -136,7 +136,7 @@ public class ResultCheck {
     public boolean FourOfAKind(ArrayList<String> cardsOnTheTable) {
         String card = new String();
         for(int i = 0; i < cardsOnTheTable.size(); i++){
-            card = cardsOnTheTable.get(i);
+            card = cardsOnTheTable.get(i); //counting different power of cards
             if(card.contains("2")){
                 amountS[0]++;
             }
@@ -176,9 +176,6 @@ public class ResultCheck {
             if(card.contains("A")){
                 amountS[12]++;
             }
-        }
-        for(int i = 0;i<13;i++ ){
-            System.out.println("XXXXX" + amountS[i]);
         }
         Arrays.sort(amountS);
         if(amountS[12]>=4)
