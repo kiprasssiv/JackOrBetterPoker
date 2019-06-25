@@ -20,7 +20,7 @@ public class Game {
     private static int cardAmount = 54;
     private void setDeck() {
 
-        deck.addAll(Arrays.asList(hearts));
+        deck.addAll(Arrays.asList(hearts)); //setting everything up
         deck.addAll(Arrays.asList(spades));
         deck.addAll(Arrays.asList(clubs));
         deck.addAll(Arrays.asList(diamonds));
@@ -52,7 +52,7 @@ public class Game {
             if(answers.equals("Yes"))
             {
                 while(true) {
-                    System.out.println("Enter the number of the card you want to replace");
+                    System.out.println("Enter the number of the card you want to replace"); //waiting until the end of the input
                     printingCards();
                     answers = input.nextLine();
                     deletedCardNumber = Integer.valueOf(answers);
@@ -80,18 +80,9 @@ public class Game {
         }
         playersHand = player.getPlayerHand();
         System.out.println("Your cards: " + playersHand.get(0) + " " + playersHand.get(1));
-        totalSet.addAll(playersHand);
+        totalSet.addAll(playersHand); //all table cards
         totalSet.addAll(tableCards);
         Collections.sort(totalSet);
-
-
-        tableCards.clear();
-        tableCards.add("D5");
-        tableCards.add("D3");
-        tableCards.add("D6");
-        tableCards.add("D2");
-        tableCards.add("DA");
-
         if(checker.RoyalFlush(totalSet))
         {
             player.setScore(800);
@@ -148,14 +139,11 @@ public class Game {
             System.out.println("YOU HAVE A JACK OR BETTER");
             return;
         }
+        System.out.println("Your score: " + player.getScore());
     }
     private void changePower(){
-        for(int i = 0; i<totalSet.size(); i++)
+        for(int i = 0; i<totalSet.size(); i++) //preparing array for counting
         {
-            /*if(totalSet.get(i).contains("10")) {
-                String newS = totalSet.get(i).replaceAll("10","A");
-                totalSet.set(i,newS);
-            }*/
             if(totalSet.get(i).contains("J")) {
                 String newS = totalSet.get(i).replaceAll("J","11");
                 totalSet.set(i,newS);
@@ -180,4 +168,3 @@ private void printingCards()
             "4." + tableCards.get(3) + " " + "5." + tableCards.get(4));
 }
 }
-
