@@ -139,7 +139,6 @@ public class Game {
             System.out.println("YOU HAVE A JACK OR BETTER");
             return;
         }
-        System.out.println("Your score: " + player.getScore());
     }
     private void changePower(){
         for(int i = 0; i<totalSet.size(); i++) //preparing array for counting
@@ -167,4 +166,7 @@ private void printingCards()
     System.out.println("1." + tableCards.get(0) + " " + "2." + tableCards.get(1) + " " + "3." + tableCards.get(2) + " " +
             "4." + tableCards.get(3) + " " + "5." + tableCards.get(4));
 }
+public int returnScore() {
+    return player.getScore();
+    }
 }
