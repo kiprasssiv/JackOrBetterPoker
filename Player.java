@@ -22,6 +22,5 @@ public class Player {
     public static int getScore() {
         return score;
     }
-
-
 }
+
