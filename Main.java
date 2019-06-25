@@ -25,6 +25,7 @@ public class Main {
                     }
                 }
             }
+            System.out.println("Your score: " + game.returnScore());
         }
         System.out.println("Thank you for playing");
 
